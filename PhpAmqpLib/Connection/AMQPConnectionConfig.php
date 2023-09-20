@@ -347,7 +347,7 @@ final class AMQPConnectionConfig
                 $this->setNetworkProtocol('ssl');
             }
 
-            $this->sslCryptoMethod = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+            $this->sslCryptoMethod = STREAM_CRYPTO_METHOD_ANY_CLIENT;
         } else {
             $this->setNetworkProtocol('tcp');
             $this->sslCryptoMethod = null;
@@ -363,7 +363,7 @@ final class AMQPConnectionConfig
     }
 
     /**
-     * @deprecated Use setSslCryptoMethod()
+     * @deprecated Use setIsSecure() and setSslCryptoMethod()
      */
     public function setNetworkProtocol(string $networkProtocol): void
     {

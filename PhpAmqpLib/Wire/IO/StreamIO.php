@@ -72,7 +72,7 @@ class StreamIO extends AbstractIO
 
         $options = stream_context_get_options($this->context);
         if (!empty($options['ssl']) && !isset($options['ssl']['crypto_method'])) {
-            if (!stream_context_set_option($this->context, 'ssl', 'crypto_method', STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+            if (!stream_context_set_option($this->context, 'ssl', 'crypto_method', STREAM_CRYPTO_METHOD_ANY_CLIENT)) {
                 throw new AMQPIOException("Can not set ssl.crypto_method stream context option");
             }
         }
@@ -424,7 +424,7 @@ class StreamIO extends AbstractIO
 
         do {
             $enabled = stream_socket_enable_crypto($this->sock, true);
-        } while ($enabled === 0 && time() < $timeout_at);
+        } while ($enabled !== true && time() < $timeout_at);
 
         if ($enabled !== true) {
             throw new AMQPIOException('Can not enable crypto');

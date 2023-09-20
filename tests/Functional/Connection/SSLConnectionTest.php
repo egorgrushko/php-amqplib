@@ -89,7 +89,7 @@ class SSLConnectionTest extends AbstractConnectionTest
         ];
 
         // #5 TLS crypto method
-        $options[] = ['ssl' => ['crypto_method' => STREAM_CRYPTO_METHOD_TLS_CLIENT]];
+        $options[] = ['ssl' => ['crypto_method' => STREAM_CRYPTO_METHOD_ANY_CLIENT]];
         $sets[] = [
             $options
         ];

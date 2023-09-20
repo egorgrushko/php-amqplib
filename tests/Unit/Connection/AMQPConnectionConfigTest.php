@@ -61,7 +61,7 @@ class AMQPConnectionConfigTest extends TestCase
         $config->setVhost(VHOST);
 
         $config->setIsSecure(true);
-        $config->setSslCryptoMethod(STREAM_CRYPTO_METHOD_TLS_SERVER);
+        $config->setSslCryptoMethod(STREAM_CRYPTO_METHOD_ANY_SERVER);
 
         $config->setSslVerify(true);
         // CommonName is different make sure to not check
